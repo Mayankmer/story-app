@@ -1,16 +1,21 @@
-# React + Vite
+AI Story Generator Web AppA React-based web application that uses Generative AI to create dynamic stories based on user-defined genres, characters, and plot outlines.PrerequisitesNode.js (Version 16 or higher)npm (comes with Node.js)A Google Gemini API Key (Get one here)Quick Setup GuideFollow these commands in your terminal to set up the project from scratch.1. Create the ProjectCreate a new Vite + React project:npm create vite@latest story-generator -- --template react
+cd story-generator
+2. Install DependenciesInstall the required packages (Tailwind CSS and Icons):npm install
+npm install lucide-react
+npm install tailwindcss @tailwindcss/vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+3. Configure StylesA. Update tailwind.config.jsReplace the content of vite.config.js with:
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 
-Currently, two official plugins are available:
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+})
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+B. Update src/index.cssReplace the content of src/index.css with:@import "tailwindcss";;
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+4. Add Application CodeOpen src/App.jsx.Delete all existing code in that file.Paste the Story Generator code into src/App.jsx.5. Add Your API KeyOpen src/App.jsx and find line 6:const apiKey = "PASTE_YOUR_GEMINI_API_KEY_HERE";
+Replace the empty string with your actual API Key.6. Run the AppStart the development server:npm run dev
+Click the link in the terminal (usually http://localhost:5173) to open the app.
